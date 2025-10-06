@@ -1,0 +1,18 @@
+[package]
+name = "sensor-simulator"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "sensor-simulator"
+path = "src/main.rs"
+
+[dependencies]
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+rumqttc.workspace = true
+rand.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+anyhow.workspace = true

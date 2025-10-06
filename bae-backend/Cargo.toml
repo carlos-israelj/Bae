@@ -1,0 +1,50 @@
+# Cargo.toml
+
+[workspace]
+members = [
+    "api-server",
+    "sensor-simulator", 
+    "gateway"
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Bae Team"]
+license = "Apache-2.0"
+
+[workspace.dependencies]
+# Web framework
+axum = "0.7"
+tokio = { version = "1", features = ["full"] }
+tower = "0.4"
+tower-http = { version = "0.5", features = ["cors", "trace"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Blockchain / Polkadot
+subxt = "0.35"
+sp-core = "31"
+sp-keyring = "34"
+
+# MQTT
+rumqttc = "0.24"
+
+# Crypto
+aes-gcm = "0.10"
+sha2 = "0.10"
+rand = "0.8"
+hex = "0.4"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Utilities
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.0", features = ["v4", "serde"] }
+anyhow = "1.0"
+thiserror = "1.0"
