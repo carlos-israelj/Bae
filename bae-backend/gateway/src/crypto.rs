@@ -16,7 +16,7 @@ pub struct CryptoHandler {
 
 impl CryptoHandler {
     pub fn new(key_hex: &str) -> Result<Self> {
-        let key_bytes = hex::decode(key_hex).map_err(|e| anyhow!("Invalid hex key: {}", e))?;
+        let key_bytes = hex::decode(key_hex).map_err(|e| anyhow!("Invalid key: {}", e))?;
         if key_bytes.len() != 32 {
             return Err(anyhow!("Key must be 32 bytes"));
         }
@@ -29,7 +29,8 @@ impl CryptoHandler {
         let mut nonce_bytes = [0u8; 12];
         OsRng.fill_bytes(&mut nonce_bytes);
         let nonce = Nonce::from_slice(&nonce_bytes);
-        let ciphertext = self.cipher.encrypt(nonce, plaintext.as_ref()).map_err(|e| anyhow!("Encryption failed: {}", e))?;
+        let ciphertext = self.cipher.encrypt(nonce, plaintext.as_ref())
+            .map_err(|e| anyhow!("Encryption failed: {}", e))?;
         Ok(EncryptedPayload { ciphertext, nonce: nonce_bytes.to_vec() })
     }
 

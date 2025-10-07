@@ -1,0 +1,41 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/mnt/c/Users/CarlosIsraelJiménezJ/Documents/Polkadot/Bae/bae-backend/contracts/contracts/BaeSensorRegistry.sol": {
+      "lastModificationDate": 1759870628644,
+      "contentHash": "6104cec25dbba40a0f8008bc8de97c46",
+      "sourceName": "contracts/BaeSensorRegistry.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "BaeSensorRegistry"
+      ]
+    }
+  }
+}

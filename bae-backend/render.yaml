@@ -1,29 +1,10 @@
-# render.yaml
-
 services:
-  # API Server - Consulta Paseo Testnet y sirve datos al frontend
+  # Gateway - Escribe datos al smart contract
   - type: web
-    name: bae-api-server
-    env: rust
-    plan: free
-    buildCommand: cargo build --release --bin api-server
-    startCommand: ./target/release/api-server
-    healthCheckPath: /health
-    envVars:
-      - key: PORT
-        value: 3000
-      - key: RUST_LOG
-        value: info
-      - key: BLOCKCHAIN_ENDPOINT
-        value: wss://paseo-rpc.polkadot.io
-      - key: ENCRYPTION_KEY
-        generateValue: true
-
-  # Gateway - Procesa datos MQTT y envía a Paseo Testnet
-  - type: worker
     name: bae-gateway
     env: rust
     plan: free
+    rootDir: bae-backend
     buildCommand: cargo build --release --bin gateway
     startCommand: ./target/release/gateway
     envVars:
@@ -33,16 +14,21 @@ services:
         value: broker.hivemq.com
       - key: MQTT_PORT
         value: 1883
-      - key: BLOCKCHAIN_ENDPOINT
-        value: wss://paseo-rpc.polkadot.io
-      - key: ENCRYPTION_KEY
+      - key: RPC_URL
+        value: https://testnet-passet-hub-eth-rpc.polkadot.io
+      - key: CONTRACT_ADDRESS
         sync: false
+      - key: PRIVATE_KEY
+        sync: false
+      - key: ENCRYPTION_KEY
+        generateValue: true
 
   # Sensor Simulator - Genera datos de prueba
   - type: worker
     name: bae-sensor-simulator
     env: rust
     plan: free
+    rootDir: bae-backend
     buildCommand: cargo build --release --bin sensor-simulator
     startCommand: ./target/release/sensor-simulator
     envVars:
