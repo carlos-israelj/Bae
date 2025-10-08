@@ -1,15 +1,16 @@
 {
   "name": "bae-contracts",
   "version": "1.0.0",
+  "description": "Bae IoT Smart Contracts",
   "scripts": {
-    "compile": "hardhat compile",
-    "deploy": "hardhat run scripts/deploy.js --network paseoHub"
+    "compile": "npx hardhat compile",
+    "deploy": "npx hardhat run scripts/deploy.js --network passetHubTestnet"
   },
+  "type": "commonjs",
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
-    "hardhat": "^2.19.0"
-  },
-  "dependencies": {
-    "ethers": "^6.15.0"
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.0",
+    "typescript": "^5.0.0",
+    "dotenv": "^16.0.0"
   }
 }

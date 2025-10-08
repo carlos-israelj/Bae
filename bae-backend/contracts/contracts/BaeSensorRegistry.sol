@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.28;
 
 contract BaeSensorRegistry {
     
@@ -12,13 +12,15 @@ contract BaeSensorRegistry {
         uint256 blockNumber;
     }
     
-    // Array simple en lugar de mapping
     SensorData[] public allReadings;
-    
-    // Contador simple
     uint256 public totalReadings;
     
-    event SensorDataSubmitted(string indexed deviceId, uint256 timestamp, uint256 blockNumber, uint256 index);
+    event SensorDataSubmitted(
+        string indexed deviceId,
+        uint256 timestamp,
+        uint256 blockNumber,
+        uint256 index
+    );
     
     function submitSensorData(
         string memory deviceId,
@@ -37,10 +39,14 @@ contract BaeSensorRegistry {
         });
         
         allReadings.push(data);
-        uint256 index = allReadings.length - 1;
         totalReadings++;
         
-        emit SensorDataSubmitted(deviceId, timestamp, block.number, index);
+        emit SensorDataSubmitted(
+            deviceId,
+            timestamp,
+            block.number,
+            allReadings.length - 1
+        );
     }
     
     function getLatestReading() 
@@ -52,15 +58,6 @@ contract BaeSensorRegistry {
         return allReadings[allReadings.length - 1];
     }
     
-    function getReading(uint256 index)
-        external
-        view
-        returns (SensorData memory)
-    {
-        require(index < allReadings.length, "Invalid index");
-        return allReadings[index];
-    }
-    
     function getReadingCount() 
         external 
         view 
@@ -69,21 +66,12 @@ contract BaeSensorRegistry {
         return allReadings.length;
     }
     
-    function getLastNReadings(uint256 n)
+    function getReading(uint256 index)
         external
         view
-        returns (SensorData[] memory)
+        returns (SensorData memory)
     {
-        uint256 count = allReadings.length;
-        uint256 size = count < n ? count : n;
-        
-        SensorData[] memory results = new SensorData[](size);
-        uint256 start = count > n ? count - n : 0;
-        
-        for (uint256 i = 0; i < size; i++) {
-            results[i] = allReadings[start + i];
-        }
-        
-        return results;
+        require(index < allReadings.length, "Invalid index");
+        return allReadings[index];
     }
 }
