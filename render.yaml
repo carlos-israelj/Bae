@@ -1,0 +1,45 @@
+services:
+  # Gateway - Escucha MQTT y escribe al smart contract
+  - type: web
+    name: bae-gateway
+    env: rust
+    plan: free
+    rootDir: gateway
+    buildCommand: cargo build --release --bin gateway
+    startCommand: ./target/release/gateway
+    healthCheckPath: /  # Render necesita esto para web services
+    envVars:
+      - key: RUST_LOG
+        value: info
+      - key: MQTT_BROKER
+        value: broker.hivemq.com
+      - key: MQTT_PORT
+        value: 1883
+      - key: RPC_URL
+        value: https://testnet-passet-hub-eth-rpc.polkadot.io
+      - key: CONTRACT_ADDRESS
+        value: 0xfD0b399898efC0186E32eb81B630d7Cf7Bb6f217
+      - key: PRIVATE_KEY
+        sync: false  # Se configura manualmente en Render dashboard
+      - key: ENCRYPTION_KEY
+        sync: false  # Se configura manualmente en Render dashboard
+
+  # Sensor Simulator - Genera datos de prueba
+  - type: worker
+    name: bae-sensor-simulator
+    env: rust
+    plan: free
+    rootDir: sensor-simulator
+    buildCommand: cargo build --release --bin sensor-simulator
+    startCommand: ./target/release/sensor-simulator
+    envVars:
+      - key: RUST_LOG
+        value: info
+      - key: MQTT_BROKER
+        value: broker.hivemq.com
+      - key: MQTT_PORT
+        value: 1883
+      - key: DEVICE_ID
+        value: ESP32-001
+      - key: INTERVAL_SECS
+        value: 30
