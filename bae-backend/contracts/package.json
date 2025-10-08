@@ -1,16 +1,24 @@
 {
   "name": "bae-contracts",
   "version": "1.0.0",
-  "description": "Bae IoT Smart Contracts",
+  "description": "Bae IoT Smart Contracts - Paseo Hub Edition",
   "scripts": {
     "compile": "npx hardhat compile",
-    "deploy": "npx hardhat run scripts/deploy.js --network passetHubTestnet"
+    "test": "npx hardhat test",
+    "node": "npx hardhat node",
+    "deploy": "npx hardhat run scripts/deploy.js --network passetHubTestnet",
+    "deploy:local": "npx hardhat run scripts/deploy.js --network localNode",
+    "verify": "npx hardhat run scripts/verify-contract.js --network passetHubTestnet",
+    "verify:local": "npx hardhat run scripts/verify-contract.js --network localNode",
+    "verify:source": "npx hardhat run scripts/verify-source.js --network passetHubTestnet"
   },
   "type": "commonjs",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@parity/hardhat-polkadot": "^0.1.9",
     "hardhat": "^2.22.0",
     "typescript": "^5.0.0",
-    "dotenv": "^16.0.0"
+    "dotenv": "^16.0.0",
+    "solc": "^0.8.28"
   }
 }
