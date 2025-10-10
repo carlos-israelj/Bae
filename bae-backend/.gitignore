@@ -1,25 +1,76 @@
-# Rust
-/target
+# === Rust ===
+/target/
 **/*.rs.bk
 Cargo.lock
+**/*.dSYM/
+**/*.rlib
+**/*.rmeta
+**/*.exe
+**/*.dll
+**/*.so
+**/*.dylib
 
-# IDE
+# Metadata cache (generado por subxt)
+metadata/*.scale
+
+# === Node.js ===
+node_modules/
+contracts/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+dist/
+build/
+.cache/
+
+# Mantener package-lock.json
+!package-lock.json
+
+# === Hardhat / Blockchain ===
+artifacts/
+cache/
+typechain/
+coverage/
+*.tsbuildinfo
+*.sol.js
+*.sol.d.ts
+*.db
+*.sqlite
+*.pid
+*.pid.lock
+
+# === IDEs and Editors ===
 .vscode/
 .idea/
+*.sublime-workspace
+*.sublime-project
 *.swp
 *.swo
 *~
 
-# Environment
+# === Environment ===
 .env
 .env.local
+.env.*.local
 
-# Logs
+# === Logs ===
 *.log
 
-# OS
+# === OS Files ===
 .DS_Store
 Thumbs.db
 
-# Metadata cache (generado por subxt)
-metadata/*.scale
+# === Miscellaneous ===
+*.tmp
+*.bak
+*.lock
+*.orig
+*.rej
+
+# === Testing and Coverage ===
+coverage/
+.nyc_output/
+test-results/
+jest-test-results.json
+
