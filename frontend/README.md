@@ -30,7 +30,7 @@ Este repositorio contiene la capa frontend del proyecto **Bae**, con soporte par
 2. Abre una segunda ventana de terminal y compila CSS con Tailwind en modo watch:
 
    ```bash
-   bunx @tailwindcss/cli -i ./src/app/global.css -o ./public/output.css --watch
+   bun run build:styles
    ```
 
 3. Inicia el servidor Next con Rspack:
