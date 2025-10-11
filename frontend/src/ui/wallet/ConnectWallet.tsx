@@ -14,7 +14,6 @@ export function ConnectWallet() {
   // 🔁 Redirección dinámica según conexión
   useEffect(() => {
     if (status === "connected" && isConnected && address) {
-      console.log("✅ Wallet conectada:", address);
       if (pathname !== "/test") router.push("/test");
     } else if (status === "disconnected" && pathname === "/test") {
       console.log("🚪 Wallet desconectada, redirigiendo al home");
