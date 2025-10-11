@@ -2,7 +2,13 @@
 
 import { useAccount } from "wagmi";
 
-export default function DashboardHeader({ latestReading }) {
+interface DashboardHeaderProps {
+  latestReading?: {
+    timestampDate: string | number | Date;
+  };
+}
+
+export default function DashboardHeader({ latestReading }: DashboardHeaderProps) {
   const { address, isConnected } = useAccount();
 
   return (

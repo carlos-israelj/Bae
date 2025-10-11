@@ -10,7 +10,9 @@ import {
   Tooltip,
   Legend,
   Title,
+  type ChartOptions,
 } from "chart.js";
+import type { MetricsGridProps } from "@models/reading";
 
 ChartJS.register(
   CategoryScale,
@@ -22,7 +24,7 @@ ChartJS.register(
   Title,
 );
 
-export default function HumidityChart({ readings }) {
+export default function HumidityChart({ readings }: MetricsGridProps) {
   const labels = readings.map((r) =>
     new Date(r.timestampDate).toLocaleTimeString("es-ES", {
       hour: "2-digit",
@@ -44,15 +46,20 @@ export default function HumidityChart({ readings }) {
     ],
   };
 
-  const options = {
+  const options: ChartOptions<"line"> = {
     responsive: true,
     plugins: {
       legend: { display: true },
       title: { display: true, text: "Humedad ambiental vs tiempo" },
     },
     scales: {
-      y: { beginAtZero: true, title: { display: true, text: "%" } },
-      x: { title: { display: true, text: "Tiempo" } },
+      y: {
+        beginAtZero: true,
+        title: { display: true, text: "%" },
+      },
+      x: {
+        title: { display: true, text: "Tiempo" },
+      },
     },
   };
 

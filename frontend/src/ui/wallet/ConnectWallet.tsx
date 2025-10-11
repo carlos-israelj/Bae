@@ -11,7 +11,6 @@ export function ConnectWallet() {
   const { isConnected, status, address } = useAccount();
   const { disconnect } = useDisconnect();
 
-  // 🔁 Redirección dinámica según conexión
   useEffect(() => {
     if (status === "connected" && isConnected && address) {
       if (pathname !== "/test") router.push("/test");
@@ -40,7 +39,7 @@ export function ConnectWallet() {
 
         return (
           <button
-            onClick={disconnect}
+            onClick={() => disconnect()} 
             className="bg-[#FF9689] text-white px-4 py-2 rounded font-semibold hover:bg-[#ff7f70] transition w-full md:w-auto"
             title="Click to disconnect wallet"
           >

@@ -10,7 +10,9 @@ import {
   Tooltip,
   Legend,
   Title,
+  type ChartOptions,
 } from "chart.js";
+import type { MetricsGridProps } from "@models/reading";
 
 ChartJS.register(
   CategoryScale,
@@ -22,7 +24,7 @@ ChartJS.register(
   Title,
 );
 
-export default function CombinedChart({ readings }) {
+export default function CombinedChart({ readings }: MetricsGridProps) {
   const labels = readings.map((r) =>
     new Date(r.timestampDate).toLocaleTimeString("es-ES", {
       hour: "2-digit",
@@ -54,28 +56,29 @@ export default function CombinedChart({ readings }) {
     ],
   };
 
-  const options = {
-    responsive: true,
-    interaction: { mode: "index", intersect: false },
-    stacked: false,
-    plugins: {
-      legend: { display: true },
-      title: { display: true, text: "Temperatura y Humedad (comparativo)" },
+const options: ChartOptions<"line"> = {
+  responsive: true,
+  interaction: { mode: "index", intersect: false },
+  plugins: {
+    legend: { display: true },
+    title: { display: true, text: "Temperatura y Humedad (comparativo)" },
+  },
+  scales: {
+    y1: {
+      type: "linear",
+      position: "left",
+      stacked: false,
+      title: { display: true, text: "°C" },
     },
-    scales: {
-      y1: {
-        type: "linear",
-        position: "left",
-        title: { display: true, text: "°C" },
-      },
-      y2: {
-        type: "linear",
-        position: "right",
-        title: { display: true, text: "%" },
-        grid: { drawOnChartArea: false },
-      },
+    y2: {
+      type: "linear",
+      position: "right",
+      stacked: false,
+      title: { display: true, text: "%" },
+      grid: { drawOnChartArea: false },
     },
-  };
+  },
+};
 
   return (
     <div className="bg-[#FFF8EA] p-4 rounded-xl shadow-md">

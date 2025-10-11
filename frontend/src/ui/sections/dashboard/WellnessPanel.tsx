@@ -1,6 +1,9 @@
 "use client";
 
-export default function WellnessPanel({ latestReading }) {
+import type { WellnessPanelProps } from "@models/reading";
+
+export default function WellnessPanel({ latestReading }: WellnessPanelProps) {
+  // 🔸 Estado inicial: si no hay lectura, muestra "Cargando"
   if (!latestReading)
     return (
       <div className="lg:col-span-3 bg-surface rounded-xl shadow-md p-6 text-center">
