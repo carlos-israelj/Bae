@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "biome check",
-    "format": "biome format --write"
+    "format": "biome format --write",
+    "build:styles": "bunx @tailwindcss/cli -i ./src/app/globals.css -o ./public/output.css --watch"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.14",
