@@ -1,5 +1,5 @@
 import { head } from "./head.ts";
-//import { Header } from "@components/header/Header";
+import { Header } from "@components/header/Header";
 
 export const metadata = head;
 
@@ -14,7 +14,10 @@ export default function RootLayout({
         <link rel="stylesheet" href="./output.css" />
         <link rel="icon" href="./favicon.ico" />
       </head>
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
