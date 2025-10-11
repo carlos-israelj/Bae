@@ -34,7 +34,8 @@
       "@sections/*": ["ui/sections/*"],
       "@layouts/*": ["ui/layouts/*"],
       "@wallet/*": ["ui/wallet/*"],
-      "@data/*": ["data/*"]
+      "@data/*": ["data/*"],
+      "@models/*": ["models/*"]
     },
 
     /* 🧰 Plugins */
