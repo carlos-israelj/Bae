@@ -18,11 +18,11 @@ const svgStyle: React.CSSProperties = {
 };
 
 export const LocationIcon = () => (
-  <div style={iconWrapperStyle}>
+  <div className="icon-wrapper">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      style={svgStyle}
+      className="icon-svg"
     >
       <path
         fill="currentColor"
@@ -33,11 +33,11 @@ export const LocationIcon = () => (
 );
 
 export const PhoneIcon = () => (
-  <div style={iconWrapperStyle}>
+  <div className="icon-wrapper">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      style={svgStyle}
+      className="icon-svg"
     >
       <path
         fill="currentColor"
@@ -48,11 +48,11 @@ export const PhoneIcon = () => (
 );
 
 export const FacebookIcon = () => (
-  <div style={iconWrapperStyle}>
+  <div className="icon-wrapper">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      style={svgStyle}
+      className="icon-svg"
     >
       <path
         fill="currentColor"
@@ -63,11 +63,11 @@ export const FacebookIcon = () => (
 );
 
 export const InstagramIcon = () => (
-  <div style={iconWrapperStyle}>
+  <div className="icon-wrapper">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      style={svgStyle}
+      className="icon-svg"
     >
       <path
         fill="currentColor"
@@ -78,11 +78,11 @@ export const InstagramIcon = () => (
 );
 
 export const TwitterIcon = () => (
-  <div style={iconWrapperStyle}>
+  <div className="icon-wrapper">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      style={svgStyle}
+      className="icon-svg"
     >
       <path
         fill="currentColor"
@@ -93,11 +93,11 @@ export const TwitterIcon = () => (
 );
 
 export const YoutubeIcon = () => (
-  <div style={iconWrapperStyle}>
+  <div className="icon-wrapper">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      style={svgStyle}
+      className="icon-svg"
     >
       <path
         fill="currentColor"
@@ -108,11 +108,11 @@ export const YoutubeIcon = () => (
 );
 
 export const CartIcon = () => (
-  <div style={iconWrapperStyle}>
+  <div className="icon-wrapper">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      style={{ width: "24px", height: "24px" }}
+      className="icon-svg"
     >
       <path
         fill="currentColor"

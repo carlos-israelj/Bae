@@ -1,5 +1,6 @@
 "use client";
 
+import { ConnectWallet } from "@wallet/ConnectWallet";
 import { useState } from "react";
 import Link from "next/link";
 import {
@@ -19,6 +20,7 @@ export function Header() {
     <header className="w-full shadow-md">
       {/* 🔹 Barra superior (Contacto + Redes) */}
       <div className="bg-[#9FC0AF] text-white py-2 px-6 flex flex-col sm:flex-row items-center justify-between text-sm">
+        {/* 📞 Contacto + Ubicación */}
         <div className="flex items-center gap-4 mb-2 sm:mb-0">
           <div className="flex items-center gap-2">
             <PhoneIcon />
@@ -37,6 +39,7 @@ export function Header() {
           </div>
         </div>
 
+        {/* 🌐 Redes Sociales */}
         <div className="flex items-center gap-3">
           <a
             href="https://facebook.com"
@@ -101,11 +104,13 @@ export function Header() {
                 </Link>
               </li>
             ))}
+
+            {/* 🔑 Login Web3 con wagmi */}
             <li>
-              <button className="bg-[#9FC0AF] text-black px-4 py-2 rounded font-semibold hover:opacity-90 transition">
-                Login Web3
-              </button>
+              <ConnectWallet />
             </li>
+
+            {/* 🛒 Carrito */}
             <li className="flex items-center gap-2">
               <CartIcon />
               <span>Cart</span>
@@ -113,7 +118,7 @@ export function Header() {
           </ul>
         </div>
 
-        {/* Menú móvil */}
+        {/* 📱 Menú móvil */}
         {isOpen && (
           <div className="md:hidden mt-4 flex flex-col items-center gap-4">
             {["Home", "About us", "Shop", "Contact"].map((item) => (
@@ -129,9 +134,11 @@ export function Header() {
                 {item}
               </Link>
             ))}
-            <button className="bg-[#9FC0AF] text-black px-4 py-2 rounded font-semibold hover:opacity-90 transition">
-              Login Web3
-            </button>
+
+            {/* 🔑 Login Web3 (móvil) */}
+            <ConnectWallet />
+
+            {/* 🛒 Carrito (móvil) */}
             <div className="flex items-center gap-2">
               <CartIcon />
               <span>Cart</span>
