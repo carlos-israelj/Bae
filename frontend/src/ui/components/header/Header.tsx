@@ -56,7 +56,7 @@ export function Header() {
             <InstagramIcon />
           </a>
           <a
-            href="https://twitter.com"
+            href="https://x.com/BaeBabyapp"
             target="_blank"
             rel="noopener noreferrer"
           >
