@@ -1,0 +1,24 @@
+{
+  "name": "bae-backend-api",
+  "version": "1.0.0",
+  "description": "Backend API para desencriptar datos de sensores IoT",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test.js"
+  },
+  "keywords": ["iot", "blockchain", "decryption", "api"],
+  "author": "Bae Team",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.0",
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
