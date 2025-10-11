@@ -93,4 +93,4 @@ Desktop.ini
 .biome/
 .rspack/
 .tailwind/
-
+public/output.css
