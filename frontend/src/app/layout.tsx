@@ -1,5 +1,7 @@
-import { head } from "./head.ts";
+import "@rainbow-me/rainbowkit/styles.css";
+import { head } from "./head";
 import { Header } from "@components/header/Header";
+import { Web3Provider } from "@lib/Web3Provider";
 
 export const metadata = head;
 
@@ -15,8 +17,10 @@ export default function RootLayout({
         <link rel="icon" href="./favicon.ico" />
       </head>
       <body>
-        <Header />
-        {children}
+        <Web3Provider>
+          <Header />
+          {children}
+        </Web3Provider>
       </body>
     </html>
   );
