@@ -33,6 +33,7 @@
       "@components/*": ["ui/components/*"],
       "@sections/*": ["ui/sections/*"],
       "@layouts/*": ["ui/layouts/*"],
+      "@wallet/*": ["ui/wallet/*"],
       "@data/*": ["data/*"]
     },
 
