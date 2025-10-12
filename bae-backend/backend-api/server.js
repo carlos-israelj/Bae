@@ -10,11 +10,31 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware
+// ============================================
+// MIDDLEWARE - CORS MEJORADO
+// ============================================
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://bae-frontend-plum.vercel.app'
+];
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || '*',
-  credentials: true
+  origin: function(origin, callback) {
+    // Permitir requests sin origin (Postman, curl, mobile apps, etc.)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      console.log('❌ CORS blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 app.use(express.json());
 
 // Configuración de blockchain
@@ -131,6 +151,33 @@ app.get('/health', (req, res) => {
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
   });
+});
+
+// GET /api/test - Endpoint de prueba mejorado
+app.get('/api/test', async (req, res) => {
+  try {
+    const totalReadings = await contract.totalReadings();
+    
+    res.json({
+      status: 'ok',
+      message: 'API is working correctly',
+      blockchain: {
+        connected: true,
+        contractAddress: CONTRACT_ADDRESS,
+        totalReadings: Number(totalReadings)
+      },
+      cors: {
+        allowedOrigins: allowedOrigins
+      },
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 'error',
+      message: 'Blockchain connection failed',
+      error: error.message
+    });
+  }
 });
 
 // GET /api/readings/latest/decrypt
@@ -400,9 +447,11 @@ app.listen(PORT, () => {
   console.log(`📡 Server: http://localhost:${PORT}`);
   console.log(`🔗 RPC: ${RPC_URL}`);
   console.log(`📝 Contract: ${CONTRACT_ADDRESS}`);
+  console.log(`🌐 CORS Origins: ${allowedOrigins.join(', ')}`);
   console.log('================================');
   console.log('Available endpoints:');
   console.log('  GET /health');
+  console.log('  GET /api/test');
   console.log('  GET /api/readings/latest/decrypt');
   console.log('  GET /api/readings/:index/decrypt');
   console.log('  GET /api/readings/history?limit=50&offset=0');
