@@ -14,7 +14,7 @@ export default function SectionContainer({
   return (
     <section
       id={id}
-      className={`container-responsive py-16 md:py-24 ${className}`}
+        className={`container-responsive py-16 md:py-24 ${className}`}
     >
       {children}
     </section>

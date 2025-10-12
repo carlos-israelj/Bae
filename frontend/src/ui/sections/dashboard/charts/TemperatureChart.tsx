@@ -12,7 +12,7 @@ import {
   Title,
   type ChartOptions,
 } from "chart.js";
-import type { MetricsGridProps } from "@models/reading"; // ✅ Importa el tipo global
+import type { MetricsGridProps } from "@models/reading"; 
 
 ChartJS.register(
   CategoryScale,
@@ -64,7 +64,7 @@ export default function TemperatureChart({ readings }: MetricsGridProps) {
   };
 
   return (
-    <div className="bg-[#FFF8EA] p-4 rounded-xl shadow-md">
+    <div className="w-full h-[200px] sm:h-[220px] md:h-[240px] lg:h-[260px] flex items-center justify-center">
       <Line data={data} options={options} />
     </div>
   );

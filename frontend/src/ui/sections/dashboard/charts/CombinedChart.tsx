@@ -56,32 +56,32 @@ export default function CombinedChart({ readings }: MetricsGridProps) {
     ],
   };
 
-const options: ChartOptions<"line"> = {
-  responsive: true,
-  interaction: { mode: "index", intersect: false },
-  plugins: {
-    legend: { display: true },
-    title: { display: true, text: "Temperatura y Humedad (comparativo)" },
-  },
-  scales: {
-    y1: {
-      type: "linear",
-      position: "left",
-      stacked: false,
-      title: { display: true, text: "°C" },
+  const options: ChartOptions<"line"> = {
+    responsive: true,
+    interaction: { mode: "index", intersect: false },
+    plugins: {
+      legend: { display: true },
+      title: { display: true, text: "Temperatura y Humedad (comparativo)" },
     },
-    y2: {
-      type: "linear",
-      position: "right",
-      stacked: false,
-      title: { display: true, text: "%" },
-      grid: { drawOnChartArea: false },
+    scales: {
+      y1: {
+        type: "linear",
+        position: "left",
+        stacked: false,
+        title: { display: true, text: "°C" },
+      },
+      y2: {
+        type: "linear",
+        position: "right",
+        stacked: false,
+        title: { display: true, text: "%" },
+        grid: { drawOnChartArea: false },
+      },
     },
-  },
-};
+  };
 
   return (
-    <div className="bg-[#FFF8EA] p-4 rounded-xl shadow-md">
+    <div className="w-full h-[200px] sm:h-[220px] md:h-[240px] lg:h-[260px] flex items-center justify-center">
       <Line data={data} options={options} />
     </div>
   );
